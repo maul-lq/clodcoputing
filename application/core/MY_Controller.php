@@ -10,6 +10,7 @@ class MY_Controller extends CI_Controller
 
 class Admin_Controller extends MY_Controller 
 {
+	protected $data = array();
 	var $permission = array();
 
 	public function __construct() 

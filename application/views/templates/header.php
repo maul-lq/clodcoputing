@@ -43,9 +43,6 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
   <!-- jQuery 3 -->
   <script src="<?php echo base_url('assets/bower_components/jquery/dist/jquery.min.js') ?>"></script>
   <!-- jQuery UI 1.11.4 -->
@@ -81,8 +78,10 @@
   <script src="<?php echo base_url('assets/bower_components/select2/dist/js/select2.full.min.js') ?>"></script>
   <!-- AdminLTE App -->  
   <script src="<?php echo base_url('assets/dist/js/adminlte.min.js') ?>"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+  <?php if (($page_title ?? '') === 'Dashboard'): ?>
+  <!-- Dashboard-specific widgets -->
   <script src="<?php echo base_url('assets/dist/js/pages/dashboard.js') ?>"></script>
+  <?php endif; ?>
   <!-- AdminLTE for demo purposes -->
   <script src="<?php echo base_url('assets/dist/js/demo.js') ?>"></script>
   <script src="<?php echo base_url('assets/plugins/fileinput/fileinput.min.js') ?>"></script>

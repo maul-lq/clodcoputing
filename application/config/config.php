@@ -23,7 +23,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/';
+$detected_scheme = (
+	isset($_SERVER['HTTPS'])
+	&& $_SERVER['HTTPS'] !== 'off'
+	&& $_SERVER['HTTPS'] !== ''
+) ? 'https' : 'http';
+
+$detected_host = $_SERVER['HTTP_HOST'] ?? '';
+$detected_script_name = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
+$detected_base_path = rtrim(str_replace('/index.php', '', $detected_script_name), '/');
+
+$config['base_url'] = ($detected_host !== '')
+	? $detected_scheme.'://'.$detected_host.($detected_base_path !== '' ? $detected_base_path : '').'/'
+	: 'http://localhost/';
 
 /*
 |--------------------------------------------------------------------------

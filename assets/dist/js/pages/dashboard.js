@@ -9,6 +9,10 @@ $(function () {
 
   'use strict';
 
+  if (!$('#revenue-chart, #line-chart, #sales-chart, #world-map, #calendar, .todo-list, .connectedSortable, .daterange, .textarea, .knob').length) {
+    return;
+  }
+
   // Make the dashboard widgets sortable Using jquery UI
   $('.connectedSortable').sortable({
     placeholder         : 'sort-highlight',

@@ -66,7 +66,16 @@
 switch (ENVIRONMENT)
 {
 	case 'development':
-		error_reporting(-1);
+		/*
+		 * PHP 8.1+ emits deprecation notices for legacy CodeIgniter 3 internals
+		 * (dynamic properties, session handler signatures, etc.). When these
+		 * notices are displayed before sessions/headers start, the local app
+		 * becomes unusable even though execution can otherwise continue.
+		 *
+		 * Keep development error visibility enabled, but suppress deprecations so
+		 * XAMPP/PHP 8.2 can run this project normally.
+		 */
+		error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 		ini_set('display_errors', 1);
 	break;
 
